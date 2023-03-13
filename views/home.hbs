@@ -1,0 +1,74 @@
+      <article>
+        <section class="hero">
+          <img src="./images/bill.jpg" alt="house image" />
+
+          <div class="imgText">
+            Welcome to Fantasy Shelters!.<br>
+            Enjoy the full luxurious stays with us. Check in now!
+          </div>
+        </section>
+        <section class="content">
+          <div class="contentA">
+            <div class="material-icons">celebration</div>
+            <div class="Apara">
+              <h3>Fun Leisure Environment</h3>
+              <p>
+                Majority houses have 4 bed 4 bath with attahced bathrooms. Also
+                comes with beautiful backyards.
+              </p>
+            </div>
+          </div>
+          <div class="contentB">
+            <div class="material-icons">hot_tub</div>
+            <div class="Bpara">
+              <h3>Great Amenities included</h3>
+              <p>
+                All houses you rent will have jacuzzie, hot tub, swimming pool,
+                spa lounge and many more facilities.
+              </p>
+            </div>
+          </div>
+          <div class="contentC">
+            <div class="material-icons">savings</div>
+            <div class="Cpara">
+              <h3>Easy On Pocket</h3>
+              <p>
+                Cheaper than other websites. Also 100% refund guaranteed if not
+                satisfied*
+              </p>
+            </div>
+          </div>
+        </section>
+         <section class="featuredRentals">
+          <div class="featuredTitals">
+            <h2>Find a place perfect for you!</h2>
+          </div>
+          <div class="featuredGrid">
+
+            {{!-- <div class="rentalProps">
+              <img class = "hii" src="./images/h3.jpg" alt="Image of a house with dark shade">
+              <h3>Luxury High End House</h3>
+              <p>Sleeps 4 &#x2022 2BR &#x2022 1BA &#x2022 &emsp; $300/night</p>
+            </div>
+            <div class="rentalProps">
+              <img class = "hii" src="./images/h2.jpg" alt="yellow liting image of house">
+              <h3>Yellow Ambience with pool</h3>
+              <p>Sleeps 4 &#x2022 2BR &#x2022 1BA &#x2022 &emsp; $400/night</p>
+            </div>
+            <div class="rentalProps">
+              <img class = "hii" src="./images/h1.jpg" alt="house image with garden">
+              <h3>Classic House with Garden</h3>
+              <p>Sleeps 4 &#x2022 2BR &#x2022 1BA &#x2022 &emsp; $225/night</p>
+            </div> --}}
+
+            
+        {{#each featuredRentals}}
+
+        {{>rental}}
+        
+        {{/each}}
+
+
+          </div>
+        </section>
+      </article>
