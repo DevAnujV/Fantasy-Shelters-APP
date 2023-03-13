@@ -14,7 +14,8 @@ const path = require("path");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const app = express();
-const models = require("./models/rentals-ds")
+const models = require("./models/backendJS/rentals-ds");
+const checkValidation = require("./models/backendJS/validation");
 
 // Set up Handlebars
 app.engine(".hbs", exphbs.engine({
