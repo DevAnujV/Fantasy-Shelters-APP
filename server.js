@@ -24,6 +24,7 @@ app.engine(".hbs", exphbs.engine({
 }));
 app.set("view engine", ".hbs");
 
+app.use(express.urlencoded({ extended: false }));
 // Add your routes here
 // e.g. app.get() { ... }
 app.use(express.static("assets"))
@@ -49,6 +50,45 @@ app.get("/sign-up", function(req, res){
 app.get("/login", function(req, res){
     res.render("log-in");
 })
+
+app.post("/sign-up", (req, res) => {
+    console.log(req.body);
+    const { firstname, lastname, email, password } = req.body;
+    const { validated, displayMessage } =
+      checkValidation.fantasySheltersSignupValidation({ firstname, lastname, email, password });
+    if (validated) {
+        
+            res.render("welcome", {
+              title: "welcome Page",
+            });
+    } 
+    else {
+      res.render("sign-up", {
+        title: "sign-up",
+        messageToBeDisplayed: displayMessage,
+      });
+    }
+  });
+  
+  app.post("/log-in", (req, res) => {
+    console.log(req.body);
+    const { email, password } = req.body;
+    const { validated, displayMessage } = checkValidation.fantasySheltersLoginValidation({
+      email,
+      password,
+    });
+    if (validated) {
+      res.render("welcome", {
+        title: "welcome Page",
+      });
+    } else {
+      res.render("log-in", {
+        title: "log-in",
+        messageToBeDisplayed: displayMessage,
+      });
+    }
+  });
+  
 
 
 // *** DO NOT MODIFY THE LINES BELOW ***
