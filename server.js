@@ -66,6 +66,7 @@ app.post("/sign-up", (req, res) => {
       res.render("sign-up", {
         title: "sign-up",
         messageToBeDisplayed: displayMessage,
+        values: req.body
       });
     }
   });
@@ -85,6 +86,7 @@ app.post("/sign-up", (req, res) => {
       res.render("log-in", {
         title: "log-in",
         messageToBeDisplayed: displayMessage,
+        values: req.body
       });
     }
   });
