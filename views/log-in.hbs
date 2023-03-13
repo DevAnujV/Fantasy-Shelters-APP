@@ -5,10 +5,16 @@
       <div class="input-container ic2">
         <label for="email"></label>
         <input id="email" class="input" name="email" type="text" placeholder="Email" value="{{values.email}}"/><br>
+        {{#if messageToBeDisplayed.email}}
+        <span style="color:rgb(61, 35, 1);">{{messageToBeDisplayed.email}}</span><br>
+        {{/if}}
       </div>
       <div class="input-container ic2">
         <label for="password"></label>
         <input id="password" class="input" name="password" type="password" placeholder="Password" value="{{values.password}}"/><br>
+        {{#if messageToBeDisplayed.password}}
+        <span style="color:rgb(61, 35, 1);">{{messageToBeDisplayed.password}}</span><br>
+        {{/if}}
       </div>
       <button type="text" class="submit">login</button>
     <form>

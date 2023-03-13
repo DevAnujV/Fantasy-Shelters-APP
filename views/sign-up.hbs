@@ -7,18 +7,30 @@
       <div class="input-container ic1">
         <label for="firstname"></label>
         <input  id="firstname" class="input" name="firstname" type="text" placeholder="First Name"/><br>
+        {{#if messageToBeDisplayed.firstname}}
+        <div style="color:rgb(61, 35, 1);">{{messageToBeDisplayed.firstname}}</div><br>
+       {{/if}}
       </div>
       <div class="input-container ic2">
         <label for="lastname"></label>
         <input id="lastname" class="input" name="lastname" type="text" placeholder="Last Name"/><br>
+        {{#if messageToBeDisplayed.lastname}}
+        <div style="color:rgb(61, 35, 1);">{{messageToBeDisplayed.lastname}}</div><br>
+        {{/if}}
       </div>
       <div class="input-container ic2">
         <label for="email"></label>
         <input id="email" class="input" name="email" type="text" placeholder="Email"/><br>
+        {{#if messageToBeDisplayed.email}}
+        <div style="color:rgb(61, 35, 1);">{{messageToBeDisplayed.email}}</div><br>
+        {{/if}}
       </div>
       <div class="input-container ic2">
         <label for="password"></label>
         <input id="password" class="input" name="password" type="password" placeholder="Password"/><br>
+        {{#if messageToBeDisplayed.password}}
+        <div id="specialDisplay" style="color:rgb(61, 35, 1);">{{messageToBeDisplayed.password}}</div><br>
+        {{/if}}
        </div>
       <div>
         <button type="text" class="submit">Sign Up today!</button>
