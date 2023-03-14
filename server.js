@@ -69,7 +69,7 @@ app.post("/sign-up", (req, res) => {
     );
     const msg = {
       to: req.body.email,
-      from: "anujvermars@gmail.com",
+      from: "elseanuj@gmail.com",
       subject: "Registration confirmation at Fantasy Shelters",
       html: `Hello ${req.body.firstName}, Thank you for Registration at Fantasy Shelters. I am Anuj Verma, here to welcome you and provide further assistance.`,
     };
