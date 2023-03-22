@@ -71,7 +71,7 @@ app.post("/sign-up", (req, res) => {
       to: req.body.email,
       from: "elseanuj@gmail.com",
       subject: "Registration confirmation at Fantasy Shelters",
-      html: `Hello ${req.body.firstName}, Thank you for Registration at Fantasy Shelters. I am Anuj Verma, here to welcome you and provide further assistance.`,
+      html: `Hello ${req.body.firstname}, Thank you for Registration at Fantasy Shelters. I am Anuj Verma, here to welcome you and provide further assistance.`,
     };
     sgMail
       .send(msg)
