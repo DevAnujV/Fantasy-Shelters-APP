@@ -12,12 +12,16 @@
 
 const path = require("path");
 const express = require("express");
-const models = require("./models/backendJS/rentals-ds");
-const checkValidation = require("./models/backendJS/validation");
+//const models = require("./models/backendJS/rentals-ds");
+//const checkValidation = require("./models/backendJS/validation");
+const mongoose = require("mongoose")
 const exphbs = require("express-handlebars");
 const dotenv = require("dotenv");
 dotenv.config({path:"./dotenv/apiKey.env"});
+const session = require("express-session")
+
 const app = express();
+
 
 // Set up Handlebars
 app.engine(
@@ -30,93 +34,40 @@ app.engine(
 app.set("view engine", ".hbs");
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use(express.static(path.join(__dirname, "/assets")));
+
+// set-up express session
+app.use(session({
+  secret: process.env.SESSION_SECRET, // this secret is used to protect the cookies, only our web app will know what the secret it
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use((req, res, next) => {
+  // res.locals.user is a global handlebars variable
+  // This means that every single handlebars file can access this variable
+
+  // Everytime the request comes in, it will copy the user to locals, which is like global variable for handlebars. Any views hbs can access this variable.
+  res.locals.user = req.session.user
+  res.locals.isClerk = req.session.isClerk
+  next();
+});
+
 // Add your routes here
 // e.g. app.get() { ... }
-app.use(express.static("assets"));
 
-app.get("/", function (req, res) {
-  res.render("home", {
-    featuredRentals: models.getFeaturedRentals(),
-  });
-});
-app.get("/rentals", function (req, res) {
-  res.render("rentals", {
-    groupedRentals: models.getRentalsByCityAndProvince(),
-  });
-});
 
-app.get("/sign-up", function (req, res) {
-  res.render("sign-up");
-});
 
-app.get("/login", function (req, res) {
-  res.render("log-in");
-});
+// controller route
 
-app.post("/sign-up", (req, res) => {
-  console.log(req.body);
-  const { firstname, lastname, email, password } = req.body;
-  const { validated, displayMessage } =
-    checkValidation.fantasySheltersSignupValidation({
-      firstname,
-      lastname,
-      email,
-      password,
-    });
-  if (validated) {
-    const sgMail = require("@sendgrid/mail");
-    sgMail.setApiKey(process.env.SEND_GRID_API_KEY
-    );
-    const msg = {
-      to: req.body.email,
-      from: "elseanuj@gmail.com",
-      subject: "Registration confirmation at Fantasy Shelters",
-      html: `Hello ${req.body.firstname}, Thank you for Registration at Fantasy Shelters. I am Anuj Verma, here to welcome you and provide further assistance.`,
-    };
-    sgMail
-      .send(msg)
-      .then(() => {
-        res.render("welcome", {
-          title: "welcome",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.render("sign-up", {
-          title: "sign-up",
-          messageToBeDisplayed: displayMessage,
-          values: req.body,
-        });
-      });
-  } else {
-    res.render("sign-up", {
-      title: "sign-up",
-      messageToBeDisplayed: displayMessage,
-      values: req.body,
-    });
-  }
-});
+const generalController = require("./controllers/generalController")
+const rentalsController = require("./controllers/rentalsController")
 
-app.post("/log-in", (req, res) => {
-  console.log(req.body);
-  const { email, password } = req.body;
-  const { validated, displayMessage } =
-    checkValidation.fantasySheltersLoginValidation({
-      email,
-      password,
-    });
-  if (validated) {
-    res.render("welcome", {
-      title: "welcome Page",
-    });
-  } else {
-    res.render("log-in", {
-      title: "log-in",
-      messageToBeDisplayed: displayMessage,
-      values: req.body,
-    });
-  }
-});
+app.use("/", generalController)
+app.use("/rentals", rentalsController)
+
+
 
 // *** DO NOT MODIFY THE LINES BELOW ***
 
@@ -145,6 +96,18 @@ function onHttpStart() {
   console.log("Express http server listening on: " + HTTP_PORT);
 }
 
-// Listen on port 8080. The default port for http is 80, https is 443. We use 8080 here
-// because sometimes port 80 is in use by other applications on the machine
-app.listen(HTTP_PORT, onHttpStart);
+
+mongoose.connect(process.env.MONGOOSE,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log("connected to mongoDB")
+  // Listen on port 8080. The default port for http is 80, https is 443. We use 8080 here
+  // because sometimes port 80 is in use by other applications on the machine
+  app.listen(HTTP_PORT, onHttpStart);
+
+})
+.catch(err => {
+  console.log(`unable to connct to mongoosedb ${err}`)
+})
+

@@ -1,7 +1,12 @@
     <div class="fillOutside">
-    <form method="post" action="/log-in">
+    <form method="post" action="/login">
       <div class="title">Welcome</div>
       <div class="subtitle subForLogin">Log into your account!</div>
+          <div>
+          {{#each errors}}
+          <p style="color: red;"><b>{{this}}</b></p>
+          {{/each}}
+        </div>
       <div class="input-container ic2">
         <label for="email"></label>
         <input id="email" class="input" name="email" type="text" placeholder="Email" value="{{values.email}}"/><br>
@@ -15,6 +20,14 @@
         {{#if messageToBeDisplayed.password}}
         <span style="color:rgb(61, 35, 1);">{{messageToBeDisplayed.password}}</span><br>
         {{/if}}
+      </div>
+      <div class="radioButtons">
+        <p><br>How would you like to login as?</p>
+        <input type="radio" id="clerk" name="option" value="clerk" checked>
+        <label for="clerk">Data Entry Clerk</label>
+        <input type="radio" id="customer" name="option" value="customer">
+        <label for="customer">Customer</label>
+
       </div>
       <button type="text" class="submit">login</button>
     <form>

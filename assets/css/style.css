@@ -482,7 +482,7 @@ nav h3{
 
   form {
     display: block;
-    height: 600px;
+    height: 640px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 130px;
@@ -565,4 +565,12 @@ nav h3{
     /* // outline: 0; */
     text-align: center;
     width: 100%;
+  }
+
+  .submitButtonforSignUp{
+    margin-top: 45px;
+  }
+
+  .radioButtons{
+    margin-top: 110px;
   }
