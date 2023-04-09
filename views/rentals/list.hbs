@@ -1,1 +1,17 @@
-<h2>Hi {{user.firstname}}, Welcome to List page</h2>
+<h2>Hi {{user.firstname}}, Welcome to List page</h2><br><br>
+<h2>Click here to go to<a href="/load-data/rentals"> Rentals Load Data Page</a></h2>
+
+<div class="headlineCRUD">
+
+
+{{#each headlineGrouped}}
+<div>
+{{>rental}}
+
+<a href="/rentals/add">Add</a> 
+<a href="/rentals/remove">Remove</a> 
+<a href="/rentals/edit">Edit</a>
+</div>
+{{/each}}
+
+</div>

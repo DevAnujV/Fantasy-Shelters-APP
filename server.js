@@ -18,7 +18,8 @@ const mongoose = require("mongoose")
 const exphbs = require("express-handlebars");
 const dotenv = require("dotenv");
 dotenv.config({path:"./dotenv/apiKey.env"});
-const session = require("express-session")
+const session = require("express-session");
+const fileUpload = require("express-fileupload");
 
 const app = express();
 
@@ -36,6 +37,9 @@ app.set("view engine", ".hbs");
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "/assets")));
+
+//set-up fileUpload
+app.use(fileUpload());
 
 // set-up express session
 app.use(session({
@@ -63,9 +67,11 @@ app.use((req, res, next) => {
 
 const generalController = require("./controllers/generalController")
 const rentalsController = require("./controllers/rentalsController")
+const loadDataController = require("./controllers/loadDataController")
 
 app.use("/", generalController)
 app.use("/rentals", rentalsController)
+app.use("/load-data", loadDataController)
 
 
 

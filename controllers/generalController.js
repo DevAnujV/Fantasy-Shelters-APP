@@ -4,19 +4,36 @@ const router = express.Router()
 const models = require("../models/rentals-ds")
 const checkValidation = require("../models/validation")
 const userModel = require("../models/userModel")
+const rentalsModel = require("../models/rentalsModel")
 
 let errors=[];
-
+let featuredRentals = [];
 
   
 // home page route
 
 router.get("/", function (req, res) {
-    res.render("general/home", {
-      featuredRentals: models.getFeaturedRentals(),
-      title: "Home"
+    //res.render("general/home", {
+      // featuredRentals: models.getFeaturedRentals(),
+      // title: "Home"
+      rentalsModel.find({
+        featuredRental:true
+      }).then(found =>{
+        if (found){
+        console.log("found the rentals" + found)
+        // foundRentals will ensure that we only have the desired rental result
+        let foundRentals = found.map(value => value.toObject()); // confirm its use once!!!!!!!!!!!!!!!!!
+        res.render("general/home", {
+          featuredRentals:foundRentals
+        })
+      }
+        else{
+          console.log("Cannot find any feautured rentals from the list")
+        }
+      }).catch(err => {
+        console.log("Cannot try to find the rentals in DB"+ err)
+      })
     });
-  });
 
     // welcome page route
     router.get("/welcome", (req, res) => {

@@ -7,7 +7,7 @@ var rentalObjsArray = [
     pricePerNight: 425.99,
     city: "Scugog",
     province: "Ontario",
-    imageUrl: "./images/h3.jpg",
+    imageUrl: "/images/h3.jpg",
     featuredRental: true,
   },
   {
@@ -18,7 +18,7 @@ var rentalObjsArray = [
     pricePerNight: 165.99,
     city: "Scugog",
     province: "Ontario",
-    imageUrl: "./images/h2.jpg",
+    imageUrl: "/images/h2.jpg",
     featuredRental: true,
   },
   {
@@ -29,7 +29,7 @@ var rentalObjsArray = [
     pricePerNight: 125.99,
     city: "Scugog",
     province: "Ontario",
-    imageUrl: "./images/h1.jpg",
+    imageUrl: "/images/h1.jpg",
     featuredRental: true,
   },
   {
@@ -40,7 +40,7 @@ var rentalObjsArray = [
     pricePerNight: 225.99,
     city: "Toronto",
     province: "Ontario",
-    imageUrl: "./images/h2.jpg",
+    imageUrl: "/images/h2.jpg",
     featuredRental: false,
   },
   {
@@ -51,7 +51,7 @@ var rentalObjsArray = [
     pricePerNight: 149.99,
     city: "Toronto",
     province: "Ontario",
-    imageUrl: "./images/h3.jpg",
+    imageUrl: "/images/h3.jpg",
     featuredRental: false,
   },
   {
@@ -62,7 +62,7 @@ var rentalObjsArray = [
     pricePerNight: 225.99,
     city: "Scugog",
     province: "Ontario",
-    imageUrl: "./images/h1.jpg",
+    imageUrl: "/images/h1.jpg",
     featuredRental: false,
   }
 ];
@@ -105,3 +105,5 @@ module.exports.getRentalsByCityAndProvince = function () {
   }
   return arr1;
 };
+
+module.exports.dbArray = rentalObjsArray;

@@ -228,7 +228,7 @@ main{
 .rentalProps:hover{
     transform: scale(1.02);
     transition: 0.8s;
-    text-align: center;
+    /* text-align: center; */
     z-index: 0;
 }
 
@@ -573,4 +573,16 @@ nav h3{
 
   .radioButtons{
     margin-top: 110px;
+  }
+
+  .headlineCRUD{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 35px;
+    justify-content: center;
+    
+  }
+
+  .innerBlocksListRentals{
+
   }
