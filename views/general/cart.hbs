@@ -1,1 +1,35 @@
 <h2>Hi {{user.firstname}}, Welcome to Cart Page</h2>
+
+<div class="CartProps">
+{{#each cartSend}}
+<div class="eachProp">
+<img style="height: 80px; display:inline" src="{{this.newObj.imageUrl}}" alt="{{this.newObj.headline}}">
+<p><b>Headline</b> : {{this.newObj.headline}} 
+<b>City</b> : {{this.newObj.city}} 
+<b>Province</b> : {{this.newObj.province}}
+<b>Price per night</b>: {{this.newObj.pricePerNight}} 
+<b>Number Of Nights</b>: {{this.numNights}} 
+<b>Price for Entire Stay</b> : {{this.priceStay}}
+<a href="/remove/{{this.id}}">Remove</a>
+
+</p>
+</div>
+
+{{/each}}
+{{#if cartSend}}
+<div id="Rates">
+    <b>SubTotal</b> = {{this.subTotal}}<br>
+    <b>VAT</b> = {{this.VAT}}<br>
+    <b>Grand Total</b> = {{this.grandTotal}}<br>
+
+</div>
+
+<div class="CartProps">
+<button><a href="/place-order" style="text-decoration: none; color:black"><b>Place Order</b></a></button>
+</div>
+{{else}}
+<div>
+   <h1> Your Cart is Empty. Click <a href="/rentals">here</a> to rent some properties</h1>
+</div>
+{{/if}}
+</div>

@@ -63,9 +63,7 @@
 
             
         {{#each featuredRentals}}
-
-        {{>rental}}
-        
+        {{>rental ifCust = ../isCustomer}}
         {{/each}}
 
 

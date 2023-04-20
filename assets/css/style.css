@@ -237,6 +237,9 @@ main{
     box-shadow: 17px 13px 20px 0px rgb(33, 21, 1);
 
 }
+.rentalProps{
+    width: 100%
+}
 
 .horizontalLine{
     margin:0;
@@ -480,7 +483,7 @@ nav h3{
     padding-bottom: 40px;
 }
 
-  form {
+  .formStyle {
     display: block;
     height: 640px;
     margin-left: auto;
@@ -579,10 +582,38 @@ nav h3{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     row-gap: 35px;
-    justify-content: center;
+    justify-items: center;
+    column-gap: 5%;
+    margin: 0 5%;
     
   }
+.hii{
+    width: 100%
+}
 
-  .innerBlocksListRentals{
+.removeform{
+    display: inline;
+}
+.CRUDbuttons a{
+    text-decoration: none;
+    color: #0b0b0b;
+}
 
-  }
+.innerBlocksListRentals{
+    width: 100%
+}
+
+.eachProp p {
+    bottom: 65px;
+    position: relative;
+    left: 145px;
+}
+
+.CartProps{
+    margin: 35px;
+}
+
+#Rates{
+    border:solid black 2px;
+    padding: 8px;
+}

@@ -37,6 +37,7 @@ app.set("view engine", ".hbs");
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "/assets")));
+app.use(express.static("/public"));
 
 //set-up fileUpload
 app.use(fileUpload());
@@ -53,8 +54,10 @@ app.use((req, res, next) => {
   // This means that every single handlebars file can access this variable
 
   // Everytime the request comes in, it will copy the user to locals, which is like global variable for handlebars. Any views hbs can access this variable.
-  res.locals.user = req.session.user
-  res.locals.isClerk = req.session.isClerk
+  res.locals.user = req.session.user;
+  res.locals.isClerk = req.session.isClerk;
+  res.locals.isCustomer = req.session.isCustomer;
+  res.locals.cart = req.session.cart;
   next();
 });
 

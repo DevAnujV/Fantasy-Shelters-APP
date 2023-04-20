@@ -1,0 +1,50 @@
+<h1>This is editing page for ID - {{id}}</h1>
+<h2>Please enter the data for new Fields you want to Update</h2>
+
+
+ <form class="formStyle" action="/rentals/edit" method="POST" enctype="multipart/form-data">
+
+        <input type="hidden" name="id" hidden value="{{id}}" />
+
+        <label for="headline">Headline</label><br>
+        <input type="text" name="headline" id="headline" value="{{savedVals.headline}}" required><br><br>
+
+        <label for="numSleeps">Number of People sleep</label>
+        <input type="number" name="numSleeps" id="numSleeps" value="{{savedVals.numSleeps}}" required><br><br>
+        {{#if errStr.numSleeps}}
+        <p style="color: red;">{{errStr.numSleeps}}</p>
+        {{/if}}
+
+        <label for="numBedrooms">Number of bedrooms</label>
+        <input type="number" name="numBedrooms" id="numBedrooms" value="{{savedVals.numBedrooms}}" required><br><br>
+        {{#if errStr.numBedrooms}}
+        <p style="color: red;">{{errStr.numBedrooms}}</p>
+        {{/if}}
+
+        <label for="numBathrooms">Number of bathrooms</label>
+        <input type="number" name="numBathrooms" id="numBathrooms" value="{{savedVals.numBathrooms}}" required><br>
+        {{#if errStr.numBathrooms}}
+        <p style="color: red;">{{errStr.numBathrooms}}</p>
+        {{/if}}
+
+        <label for="pricePerNight">Price per night</label><br>
+        <input type="number" name="pricePerNight" id="pricePerNight" step=".01" value="{{savedVals.pricePerNight}}" required><br><br>
+        {{#if errStr.pricePerNight}}
+        <p style="color: red;">{{errStr.pricePerNight}}</p>
+        {{/if}}
+
+        <label for="city">City</label><br>
+        <input type="text" name="city" id="city" value="{{savedVals.city}}" required><br><br>
+
+        <label for="province">Province</label><br>
+        <input type="text" name="province" id="province" value="{{savedVals.province}}" required><br><br>
+
+        <label for="imageUrl">URL of the Image</label>
+        <input type="file" name="imageUrl" accept="image/jpeg, image/jpg, image/png" id="imageUrl" /><br><br>
+
+        <label for="featuredRental">Is it a featured Rental?</label>
+        <input type="checkbox" name="featuredRental" id="featuredRental" /><br><br>
+
+        <input type="Submit" value="Update" />
+
+    </form>

@@ -1,16 +1,20 @@
 <article class = "housesGroups"> <!-- is article needed here??? -->
 
-<h1 class = "MainHeading">Variety of choices filtered by City and Provice for you!</h1>
+<h1 class = "MainHeading">Variety of choices filtered by City and Provice for you!</a></h1>
+{{!-- {{#if isCustomer}}
+lalalalallalalalalalal
+{{/if}} --}}
 
-        {{#each groupedRentals}}
+{{#each groupedRentals}}
         <div class="cityProvince">
         <h1> {{cityProvince}} </h1>
     </div>
     <div class="groupedRentalsImg">
         {{#each rentals}}
-        {{>rental}}
+        {{>rental ifCust = ../../isCustomer}}
+    
         {{/each}}
     </div>
-        {{/each}}
+{{/each}}
 
 </article>

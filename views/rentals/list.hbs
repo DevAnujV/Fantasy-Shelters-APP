@@ -5,12 +5,14 @@
 
 
 {{#each headlineGrouped}}
-<div>
+<div class="innerBlocksListRentals">
 {{>rental}}
+<button class="CRUDbuttons"><a href="/rentals/add">Add</a></button>
 
-<a href="/rentals/add">Add</a> 
-<a href="/rentals/remove">Remove</a> 
-<a href="/rentals/edit">Edit</a>
+<span><button class="CRUDbuttons"><a href="/rentals/remove/{{this._id}}">Remove</a></button></span>
+
+{{!-- <button><a href="/rentals/remove">Remove</a></button> --}}
+<span><button class="CRUDbuttons"><a href="/rentals/edit/{{this._id}}">Edit</a></button></span>
 </div>
 {{/each}}
 

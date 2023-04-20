@@ -1,0 +1,7 @@
+<h1>Are you sure you want to delete the property {{deletedID}}</h1>
+
+<form class="removeform" action="/rentals/remove" method="POST" class="formDelete">
+ <input type="hidden" name="id" hidden value="{{deletedID}}" />
+ <input type="submit" value="Yes, Delete">
+ <span><button class="CRUDbuttons"><a href="/rentals/list">No, go back</a></button></span>
+</form>

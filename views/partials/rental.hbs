@@ -5,5 +5,11 @@
     alt="Image of a house with dark shade"
   />
   <h3>{{this.headline}}</h3>
-  <p>Sleeps {{this.numSleeps}} &#x2022 {{this.numBedrooms}}BR &#x2022 {{this.numBathrooms}}BA &#x2022 &emsp; ${{this.pricePerNight}}/night</p>
+  <p>Sleeps {{this.numSleeps}} &#x2022 {{this.numBedrooms}}BR &#x2022 {{this.numBathrooms}}BA &#x2022 &emsp; ${{this.pricePerNight}}/night
+
+    {{#if ifCust}}
+    <a href="/rent/{{this._id}}">Rent</a>
+    {{/if}}
+
+  </p>
 </div>
