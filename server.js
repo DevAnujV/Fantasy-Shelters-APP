@@ -20,6 +20,8 @@ const dotenv = require("dotenv");
 dotenv.config({path:"./dotenv/apiKey.env"});
 const session = require("express-session");
 const fileUpload = require("express-fileupload");
+const MongoStore = require('connect-mongo');
+
 
 const app = express();
 
@@ -46,7 +48,8 @@ app.use(fileUpload());
 app.use(session({
   secret: process.env.SESSION_SECRET, // this secret is used to protect the cookies, only our web app will know what the secret it
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl: process.env.MONGOOSE })
 }))
 
 app.use((req, res, next) => {
