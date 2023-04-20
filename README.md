@@ -10,4 +10,4 @@ No part of this assignment has been copied manually or electronically from any o
 
 ## Project URLs
 GitHub Repo   : https://github.com/DevAnujV/web322-averma100
-Cyclic URL    : https://drab-cyan-cape-buffalo-veil.cyclic.app/
+Cyclic URL    : https://clumsy-capris-tick.cyclic.app
